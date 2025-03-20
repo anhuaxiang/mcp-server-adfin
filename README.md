@@ -6,8 +6,9 @@
    - Windows: powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 
 ## Step 2. Configure Claude Desktop
-1. Download [Claude Desktop](https://claude.ai/download)
-2. Add to your claude_desktop_config.json:
+1. Download [Claude Desktop](https://claude.ai/download).
+2. Launch Claude and go to Settings > Developer > Edit Config.
+3. Modify `claude_desktop_config.json` with:
 ```json
 {
   "mcpServers": {
@@ -36,6 +37,7 @@
   }
 }
 ```
+4. Relaunch Claude Desktop.
 
 The first time you open Claude Desktop with these setting it may take
 10-20 seconds before the Adfin tools appear in the interface due to
