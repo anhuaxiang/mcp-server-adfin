@@ -51,9 +51,28 @@ def load_apis():
                                 request_data = components[value]['properties']
                             else:
                                 raise ValueError(f"Unknown key: {key}")
+
+            # Parameters parsing (query/path)
+            request_params = method.get('parameters', [])
+            parameters_data = []
+            for param in request_params:
+                param_schema = param.get('schema', {})
+                parameters_data.append({
+                    'name': param.get('name', 'Unnamed'),
+                    'location': param.get('in', 'unknown'),  # "query" or "path"
+                    'required': param.get('required', False),
+                    'type': param_schema.get('type', 'unknown'),
+                    'description': param.get('description', 'No description provided')
+                })
+
             method_data.append({
-                'route': path, 'method': method_name, 'summary': summary,
-                'response_description': response_description, 'request_data': request_data})
+                'route': path,
+                'method': method_name,
+                'summary': summary,
+                'response_description': response_description,
+                'request_data': request_data,
+                'parameters': parameters_data
+            })
 
     return method_data
 

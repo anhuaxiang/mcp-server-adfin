@@ -36,6 +36,8 @@ def register_all_apis():
             doc += f'If successful, the outcome will be \"{api["response_description"]}\". '
         if api['request_data']:
             doc += f'The request data should be: {api["request_data"]}.'
+        if api['parameters']:
+            doc += f'The parameters should be: {api["parameters"]}.'
         else:
             doc += f'The request data should be an empty dictionary {{}}.'
 

@@ -26,7 +26,11 @@ class AdfinSession:
         if not route.startswith('/'):
             route = '/' + route
 
-        response = method(f"{ADFIN_URL}/api{route}", json=body, headers=self._get_headers())
+        if method_type == 'get':
+            response = method(f"{ADFIN_URL}/api{route}", params=body, headers=self._get_headers())
+        else:
+            response = method(f"{ADFIN_URL}/api{route}", json=body, headers=self._get_headers())
+
         if response.status_code == 200:
             return response.json()
         else:
