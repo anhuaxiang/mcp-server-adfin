@@ -61,5 +61,9 @@ def {method_name}(request_data: dict = None) -> types.TextContent:
 register_all_apis()
 
 
-if __name__ == "__main__":
+def main():
     mcp.run(transport='stdio')
+
+
+if __name__ == "__main__":
+    main()

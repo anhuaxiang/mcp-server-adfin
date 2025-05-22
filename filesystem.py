@@ -51,5 +51,10 @@ async def make_folder_cwd(folder_name: str) -> types.TextContent:
         result = f'Folder not found. The previous cwd is maintained: {cwd}'
     return types.TextContent(type='text', text=result)
 
-if __name__ == '__main__':
+
+def main():
     mcp.run(transport='stdio')
+
+
+if __name__ == '__main__':
+    main()
